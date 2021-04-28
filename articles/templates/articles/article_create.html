@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="card mx-auto my-4 p-5" style='max-width: 700px'>
+        <h1>Create article</h1>
+        <form action="{% url 'articles:create' %}"  method="post" enctype="multipart/form-data" id="create-article-form">
+            {%csrf_token%}
+            {{form|crispy}}
+
+             <a class="d-flex mr-auto my-2"  data-toggle="collapse" id="add-category-btn" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Add new category
+            </a>
+            <div class="collapse" id="collapseExample">
+                <div>
+                   <input type="text" id="category-to-add" class="p-1">
+                   <span class="btn btn-success" id="add-category">Add</span>
+                </div>
+            </div>
+            <div class="d-flex justify-content-end">
+                <input type="submit" name="save_draft" class="btn btn-primary mr-2" value="Save draft">
+                <input type="submit" name="publish_now" class="btn btn-success" value="Publish now">
+            </div>
+
+            </form>
+        </div>
+    {% endblock %}

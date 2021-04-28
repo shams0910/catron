@@ -1,0 +1,17 @@
+{% extends 'base.html'%}
+<!-- {% load crispy_forms_tags %} -->
+
+{%block content%}
+
+    <div class="create-article">
+        <h1>Edit article</h1>
+
+        <form action="{% url 'articles:edit' article.id%}" class="site-form" method="post" enctype="multipart/form-data">
+          {%csrf_token%}
+          {{form}}
+          <div class="d-flex justify-content-end">
+            <input type="submit" class="btn btn-primary mr-2" value="Publish changes">
+          </div>
+        </form>
+    </div>
+{%endblock%}
